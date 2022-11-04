@@ -1,48 +1,26 @@
 package by.hibernate.library;
 
-import java.util.Objects;
+import lombok.*;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Author {
-    private int id;
-    private String author;
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "authors")
+public class Author implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "author_seq")
+    @Column(name = "id_author")
+    private int id_author;
 
-    public Author() {
-    }
+    @Column(name = "name_author")
+    private String name_author;
 
-    Author(int id, String author) {
-        this.id = id;
-        this.author = author;
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author") // имя поля в классе  Book
+    private Set<Book> books = new HashSet<>();
 
-    public int getId() {
-        return id;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Author author1 = (Author) o;
-        return id == author1.id && Objects.equals(author, author1.author);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, author);
-    }
-
-    @Override
-    public String toString() {
-        String str = String.format("\n%-3s %-10s", id, author);
-        return str;
-    }
 }

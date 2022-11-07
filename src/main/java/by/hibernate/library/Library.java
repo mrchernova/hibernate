@@ -29,25 +29,39 @@ public class Library {
             Transaction transaction = session.beginTransaction();
 
             Author a = new Author();
-            a.setName_author("author_la-la-la");
+            a.setName_author("author_name");
 
             System.out.println("saving --AUTHOR-- " + a);
-            int saved = (int) session.save(a); //or .persist(a)
+            long saved = (long) session.save(a);
             a.setId_author(saved);
 
             Book b = new Book();
 
             b.setAuthor(a);
 
-            b.setTitle("here must be title for book");
+            b.setTitle("title for book");
             System.out.println("saving --BOOK-- " + b);
             session.save(b);
 
 
             transaction.commit();
             System.out.println("all must be saved");
+
         }
 
+    }
+
+
+    public static void Read() {
+
+        try (Session session = getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+
+            Author author = session.get(Author.class,1L);
+            System.out.println("---FOUND AUTHOR--- \n" + author);
+            transaction.commit();
+        }
     }
 
 

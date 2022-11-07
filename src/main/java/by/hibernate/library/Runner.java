@@ -34,6 +34,7 @@ public class Runner {
                     break;
 
                 case 2:
+                    Library.Read();
                     break;
 
                 case 3:
@@ -48,7 +49,6 @@ public class Runner {
                     System.exit(0);
 
                 default:
-                    System.out.println("Library.REQUEST_TO_CHOOSE_NUMBER_FROM_LIST");
                     break;
 
 

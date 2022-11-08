@@ -30,6 +30,9 @@ public class Library {
         try (Session session = getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
+            Printable p = new Printable();
+
+
             Author a = new Author();
             a.setName_author("author_name");
 
@@ -60,8 +63,11 @@ public class Library {
             Transaction transaction = session.beginTransaction();
 
 
-            Author author = session.get(Author.class, 1L);
-            System.out.println("---FOUND AUTHOR--- \n" + author);
+            Printable p = session.get(Printable.class, 1);
+            System.out.println("------------- " + p);
+
+//            Author author = session.get(Author.class, 1L);
+//            System.out.println("---FOUND AUTHOR--- \n" + author);
             transaction.commit();
         }
     }

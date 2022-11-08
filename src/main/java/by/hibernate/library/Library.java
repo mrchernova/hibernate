@@ -7,10 +7,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import java.util.Scanner;
+
 
 public class Library {
     private static SessionFactory factory = null;
-
+    private static Scanner sc = new Scanner(System.in);
 
     private static SessionFactory getSessionFactory() {
         if (factory == null) {
@@ -58,9 +60,46 @@ public class Library {
             Transaction transaction = session.beginTransaction();
 
 
-            Author author = session.get(Author.class,1L);
+            Author author = session.get(Author.class, 1L);
             System.out.println("---FOUND AUTHOR--- \n" + author);
             transaction.commit();
+        }
+    }
+
+
+    public static void Update() {
+
+        try (Session session = getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            Author a = session.get(Author.class, 1L);
+            a.setName_author(sc.nextLine());
+
+            session.update(a);
+
+
+            transaction.commit();
+            System.out.println("----------------author must be updated------------");
+
+        }
+    }
+
+
+    public static void Delete() {
+
+        try (Session session = getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+
+            Author a = session.get(Author.class, sc.nextLong());
+            a.setName_author("noname");
+
+            session.delete(a);
+
+
+            transaction.commit();
+            System.out.println("----------------author must be deleted------------");
+
         }
     }
 

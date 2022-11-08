@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "authors")
 public class Author implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "author_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_author")
     private long id_author;
 

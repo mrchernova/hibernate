@@ -31,16 +31,22 @@ public class Runner {
 
                 case 1:
                     Library.Create();
+                    option = 0;
                     break;
 
                 case 2:
                     Library.Read();
+                    option = 0;
                     break;
 
                 case 3:
+                    Library.Update();
+                    option = 0;
                     break;
 
                 case 4:
+                    Library.Delete();
+                    option = 0;
                     break;
 
 

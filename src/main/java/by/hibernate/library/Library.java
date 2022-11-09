@@ -30,15 +30,14 @@ public class Library {
         try (Session session = getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            Printable p = new Printable();
 
 
             Author a = new Author();
             a.setName_author("author_name");
 
             System.out.println("saving --AUTHOR-- " + a);
-            long saved = (long) session.save(a);
-            a.setId_author(saved);
+            int saved = (int) session.save(a);
+            a.setIdAuthor(saved);
 
             Book b = new Book();
 
@@ -63,11 +62,10 @@ public class Library {
             Transaction transaction = session.beginTransaction();
 
 
-            Printable p = session.get(Printable.class, 1);
-            System.out.println("------------- " + p);
 
-//            Author author = session.get(Author.class, 1L);
-//            System.out.println("---FOUND AUTHOR--- \n" + author);
+
+            Author author = session.get(Author.class, 1);
+            System.out.println("---FOUND AUTHOR--- \n" + author);
             transaction.commit();
         }
     }
@@ -78,7 +76,7 @@ public class Library {
         try (Session session = getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            Author a = session.get(Author.class, 1L);
+            Author a = session.get(Author.class, 1);
             a.setName_author(sc.nextLine());
 
             session.update(a);
@@ -97,14 +95,21 @@ public class Library {
             Transaction transaction = session.beginTransaction();
 
 
-            Author a = session.get(Author.class, sc.nextLong());
-            a.setName_author("noname");
 
-            session.delete(a);
+            System.out.println("Удалить автора под номером: ");
+
+            try {
+                Author a = session.get(Author.class, sc.nextLong());
+                session.delete(a);
+                System.out.println("автор с таким id удален");
+            }catch (Exception e){
+                System.out.println("нет автора с таким id");
+                System.out.println("или есть связь с другой таблицей");
+            }
 
 
             transaction.commit();
-            System.out.println("----------------author must be deleted------------");
+
 
         }
     }

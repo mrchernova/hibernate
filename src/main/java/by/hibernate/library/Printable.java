@@ -1,19 +1,19 @@
 package by.hibernate.library;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @Entity
-@MappedSuperclass
-public class Printable implements Serializable {
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED);
+public class Printable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private int id;
+    private String name;
+    private Publisher publisher;
 
 }
-
-// еще связи настроить

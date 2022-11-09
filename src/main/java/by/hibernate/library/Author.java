@@ -13,8 +13,8 @@ import java.util.Set;
 public class Author implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_author")
-    private long id_author;
+    @Column(name = "idAuthor")
+    private int idAuthor;
 
     @Column(name = "name_author")
     private String name_author;
@@ -27,7 +27,7 @@ public class Author implements Serializable {
     @Override
     public String toString() {
         return "Author{" +
-                "id_author=" + id_author +
+                "idAuthor=" + idAuthor +
                 ", name_author='" + name_author + '\'' +
                 ", books=" + books +
                 '}';

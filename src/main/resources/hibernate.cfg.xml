@@ -23,7 +23,7 @@
         <mapping class="by.hibernate.library.Book" />
         <mapping class="by.hibernate.library.Author" />
         <mapping class="by.hibernate.library.Printable" />
-        <mapping class="by.hibernate.library.Magazine" />
-        <mapping class="by.hibernate.library.Publisher" />
+<!--        <mapping class="by.hibernate.library.Magazine" />-->
+<!--        <mapping class="by.hibernate.library.Publisher" />-->
     </session-factory>
 </hibernate-configuration>

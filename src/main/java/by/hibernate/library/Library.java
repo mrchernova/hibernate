@@ -30,26 +30,57 @@ public class Library {
         try (Session session = getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
-
+// ----------------------------------------------------
 
             Author a = new Author();
-            a.setName_author("author_name");
-
-            System.out.println("saving --AUTHOR-- " + a);
-            int saved = (int) session.save(a);
-            a.setIdAuthor(saved);
+            a.setName("authors name");
+            Author a1 = new Author();
+            a1.setName("authors name1");
 
             Book b = new Book();
+            b.setName("authors n");
+            b.setTitle("title book");
 
-            b.setAuthor(a);
+            Book b1 = new Book();
+            b1.setName("authors n1");
+            b1.setTitle("title book1");
 
-            b.setTitle("title for book");
-            System.out.println("saving --BOOK-- " + b);
+
+            session.save(a);
+            session.save(a1);
             session.save(b);
+            session.save(b1);
+
 
 
             transaction.commit();
-            System.out.println("all must be saved");
+
+
+
+// ----------------------------------------------------
+
+
+
+
+
+//            Author a = new Author();
+//            a.setName_author("author_name");
+//
+//            System.out.println("saving --AUTHOR-- " + a);
+//            int saved = (int) session.save(a);
+//            a.setIdAuthor(saved);
+//
+//            Book b = new Book();
+//
+//            b.setAuthor(a);
+//
+//            b.setTitle("title for book");
+//            System.out.println("saving --BOOK-- " + b);
+//            session.save(b);
+//
+//
+//            transaction.commit();
+//            System.out.println("all must be saved");
 
         }
 
@@ -77,7 +108,7 @@ public class Library {
             Transaction transaction = session.beginTransaction();
 
             Author a = session.get(Author.class, 1);
-            a.setName_author(sc.nextLine());
+            a.setName(sc.nextLine());
 
             session.update(a);
 

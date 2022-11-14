@@ -6,14 +6,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@Entity
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED);
+@MappedSuperclass
 public class Printable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
+    @Column(name = "name")
     private String name;
-    private Publisher publisher;
 
 }

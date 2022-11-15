@@ -38,11 +38,11 @@ public class Library {
             a1.setName("authors name1");
 
             Book b = new Book();
-            b.setName("authors n");
+            b.setNamePrint("Print name");
             b.setTitle("title book");
 
             Book b1 = new Book();
-            b1.setName("authors n1");
+            b1.setNamePrint("Print name 1");
             b1.setTitle("title book1");
 
 

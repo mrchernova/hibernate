@@ -12,7 +12,7 @@ public class Printable {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "namePrint")
+    private String namePrint;
 
 }

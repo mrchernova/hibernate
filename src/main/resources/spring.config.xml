@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    <context:annotation-config />-->
+    <!--    <context:component-scan base-package="info.spring" />-->
+
+    <!--     2. создание контекста из xml файла-->
+    <!--    <bean id="book" class="info.spring.model.Book">-->
+    <!--        <constructor-arg value="1" type="java.lang.Long"></constructor-arg>-->
+    <!--        <constructor-arg value="WandP" type="java.lang.String"></constructor-arg>-->
+    <!--        <constructor-arg ref="author"></constructor-arg>-->
+    <!--    </bean>-->
+    <!--    <bean id="author" class="info.spring.model.Author">-->
+    <!--        <constructor-arg value="1" type="java.lang.Long"></constructor-arg>-->
+    <!--        <constructor-arg value="Tolst" type="java.lang.String"></constructor-arg>-->
+    <!--    </bean>-->
+
+    <!--     3. создание контекста из репозитория? (не по имени)-->
+    <bean id="authorRepositorylolololololo" class="info.spring.repository.AuthorRepositoryImpl">
+        <property name="authors">
+            <set></set>
+        </property>
+    </bean>
+
+    <bean id="authorServicemememememe" class="info.spring.service.AuthorServiceImpl">
+        <property name="repository" ref="authorRepositorylolololololo"/>
+    </bean>
+
+    <bean id="bookService" class="info.spring.service.BookServiceImpl">
+        <property name="as" ref="authorServicemememememe"/>
+    </bean>
+
+</beans>

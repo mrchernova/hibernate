@@ -8,18 +8,20 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Setter
+@Service
 public class AuthorServiceImpl implements AuthorService {
 
-//        @Autowired
-//        private final AuthorRepository repository = new AuthorRepositoryImpl();
-        private AuthorRepository repository;// 3. создание контекста из репозитория? (не по имени)
+        @Autowired
+        private  AuthorRepository repository;
 
         public void save(Author author) {
                 repository.save(author);
         }
 
-        public Author find(String name) {
+        public List<Author> find(String name) {
 
                 return repository.find(name);
         }

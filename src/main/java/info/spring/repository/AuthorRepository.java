@@ -2,11 +2,13 @@ package info.spring.repository;
 
 import info.spring.model.Author;
 
+import java.util.List;
+
 public interface AuthorRepository {
 
     void save(Author author);
 
-    Author find(String name);
+    List<Author> find(String name);
 
 
 }

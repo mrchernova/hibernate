@@ -2,9 +2,11 @@ package info.spring.service;
 
 import info.spring.model.Author;
 
+import java.util.List;
+
 public interface AuthorService {
 
     void save(Author author);
 
-    Author find(String name);
+    List<Author> find(String name);
 }
